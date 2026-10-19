@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html><head><meta charset="utf-8"><title>Vista Oceans Signature — Pro (paste source)</title></head>
 <body style="margin:24px; background:#ffffff;">
-<!-- SELECT ALL ON THIS PAGE, COPY, THEN PASTE INTO THE GMAIL SIGNATURE EDITOR -->
+<button id="copyBtn" style="font-family:Arial,sans-serif; font-size:14px; padding:10px 22px; margin-bottom:28px; background:#171310; color:#faf6ee; border:1px solid #b9904f; border-radius:999px; cursor:pointer;">Copy signature</button>
+<div id="copyStatus" style="font-family:Arial,sans-serif; font-size:12px; color:#96702f; margin-bottom:16px;"></div>
+
+<div id="sig">
 <table cellpadding="0" cellspacing="0" border="0" role="presentation">
   <tr>
     <td style="vertical-align:middle; padding-right:18px;">
@@ -14,4 +17,28 @@
     </td>
   </tr>
 </table>
+</div>
+
+<script>
+document.getElementById('copyBtn').addEventListener('click', async function () {
+  var node = document.getElementById('sig');
+  var html = node.innerHTML;
+  var status = document.getElementById('copyStatus');
+  try {
+    await navigator.clipboard.write([new ClipboardItem({
+      'text/html': new Blob([html], {type: 'text/html'}),
+      'text/plain': new Blob([node.innerText], {type: 'text/plain'})
+    })]);
+    status.textContent = 'Copied — ready to paste into Gmail.';
+  } catch (e) {
+    var range = document.createRange();
+    range.selectNodeContents(node);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    var ok = document.execCommand('copy');
+    status.textContent = ok ? 'Copied (fallback) — ready to paste into Gmail.' : 'Copy failed: ' + e;
+  }
+});
+</script>
 </body></html>
