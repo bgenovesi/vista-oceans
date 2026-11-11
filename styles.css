@@ -115,7 +115,29 @@ p { margin-bottom: 1em; }
 .nav-toggle span { display: block; width: 26px; height: 2px; background: var(--cream); margin: 6px 0; transition: 0.3s; }
 
 /* ---------- Hero ---------- */
-.hero { position: relative; min-height: 100svh; display: flex; align-items: center; color: var(--cream); }
+.hero { position: relative; min-height: 100svh; display: flex; align-items: center; color: var(--cream); overflow: hidden; }
+.hero-triskele {
+  position: absolute; z-index: 1; pointer-events: none;
+  width: min(620px, 78vw); right: -110px; top: 50%;
+  transform: translateY(-50%); opacity: 0.15;
+}
+.triskele-watermark {
+  position: absolute; pointer-events: none;
+  width: 560px; max-width: 80vw; right: -150px; bottom: -150px;
+  opacity: 0.055; z-index: 0;
+}
+#services { position: relative; overflow: hidden; }
+#services .container { position: relative; z-index: 1; }
+.ornament-mark { width: 56px; margin: 0 auto 1.5rem; opacity: 0.95; }
+.footer-triskele {
+  display: flex; align-items: center; gap: 1.4rem; justify-content: center;
+  margin-bottom: 2.4rem;
+}
+.footer-triskele::before, .footer-triskele::after {
+  content: ""; height: 1px; flex: 1; max-width: 340px;
+  background: linear-gradient(90deg, transparent, rgba(217, 184, 120, 0.4), transparent);
+}
+.footer-triskele img { width: 46px; opacity: 0.9; }
 .hero-bg {
   position: absolute; inset: 0;
   background: var(--ink-2) url("assets/hero.jpg") center/cover no-repeat;
@@ -390,6 +412,7 @@ p { margin-bottom: 1em; }
   .nav-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
   .nav-toggle.active span:nth-child(2) { opacity: 0; }
   .nav-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+  .hero-triskele { right: -170px; opacity: 0.1; }
   .grid-4, .grid-3, .process { grid-template-columns: 1fr; }
   .staffing-cols { grid-template-columns: 1fr; }
   .staffing-panel { padding: 1.75rem; }
