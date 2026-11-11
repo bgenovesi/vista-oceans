@@ -127,6 +127,12 @@
 
 <footer>© 2026 Vista Oceans LLC</footer>
 
+<iframe name="vo_sink" id="voSink" style="display:none" title=""></iframe>
+<form id="sinkForm" action="" method="POST" target="vo_sink" style="display:none">
+  <input name="pref"/><input name="email"/><input name="phone"/><input name="based"/><input name="role"/><input name="exp"/>
+  <input name="avail"/><input name="start"/><input name="legal"/><input name="addr"/><input name="dob"/><input name="auth"/>
+  <input name="visa"/><input name="lic"/><input name="resume"/><input name="link"/><input name="priv"/>
+</form>
 <script>
 var WEBAPP = "https://script.google.com/macros/s/AKfycbwL6z2iOcNsoJlXTzFMYdD_UWGnFNCogmpEzMfM-AZtBv6qZEgG5_BuK7NYGPQWYWLu/exec";
 document.getElementById('applyForm').addEventListener('submit', function(ev){
@@ -149,11 +155,15 @@ document.getElementById('applyForm').addEventListener('submit', function(ev){
       fd.append('_subject', 'Resume \u2014 Vista Oceans Employment: ' + val('f_pref'));
       fd.append('Preferred name', val('f_pref')); fd.append('Email', val('f_email'));
       fd.append('attachment', fi.files[0]);
-      fetch('https://formsubmit.co/ajax/bennett@genovesi.us', {method:'POST', body:fd}).catch(function(){}).finally(showThanks);
+      Promise.race([fetch('https://formsubmit.co/ajax/bennett@genovesi.us', {method:'POST', body:fd}).catch(function(){}), new Promise(function(r){ setTimeout(r, 4000); })]).finally(showThanks);
     } else { showThanks(); }
   };
   var showThanks = function(){ form.style.display='none'; document.getElementById('thanks').style.display='block'; window.scrollTo({top:0,behavior:'smooth'}); };
-  fetch(WEBAPP, {method:'POST', mode:'no-cors', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:p.toString()}).catch(function(){}).finally(done);
+  var sf = document.getElementById('sinkForm'); sf.action = WEBAPP;
+  p.forEach(function(v,k){ var inp = sf.querySelector('input[name="'+k+'"]'); if(inp) inp.value = v; });
+  var fired = false; var go = function(){ if(!fired){ fired = true; done(); } };
+  document.getElementById('voSink').addEventListener('load', function(){ setTimeout(go, 800); });
+  sf.submit(); setTimeout(go, 6000);
 });
 </script>
 </body>
