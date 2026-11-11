@@ -11,11 +11,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
 <style>
-  :root{ --ink:#141310; --cream:#faf7f1; --gold:#b9904f; --line:rgba(20,19,16,.14); --muted:rgba(20,19,16,.62); }
+  :root{ --ink:#141310; --cream:#faf7f1; --gold:#b9904f; --line:rgba(20,19,16,.16); --muted:rgba(20,19,16,.60); }
   *{margin:0;padding:0;box-sizing:border-box}
   body{background:var(--cream);color:var(--ink);font-family:'Jost',sans-serif;font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased}
   a{color:inherit}
-  .wrap{max-width:880px;margin:0 auto;padding:0 24px}
+  .wrap{max-width:680px;margin:0 auto;padding:0 24px}
   header{border-bottom:1px solid var(--line)}
   .bar{max-width:1120px;margin:0 auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
   .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
@@ -25,28 +25,39 @@
   nav a{text-decoration:none;color:var(--muted)}
   nav a[aria-current]{color:var(--ink);border-bottom:1px solid var(--gold);padding-bottom:3px}
   @media(max-width:760px){nav a:not([aria-current]){display:none}}
-  .hero{padding:84px 0 56px;text-align:center}
-  .eyebrow{font-size:.75rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
-  h1{font-family:'Italiana',serif;font-weight:400;font-size:clamp(2.8rem,7vw,4.6rem);letter-spacing:.06em;text-transform:uppercase;line-height:1.05}
-  .sub{max-width:520px;margin:22px auto 0;color:var(--muted);font-size:1.08rem}
-  .roles{margin-top:34px;padding-top:28px;border-top:1px solid var(--line);font-size:.85rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);line-height:2}
+  .hero{padding:76px 0 8px;text-align:center}
+  .eyebrow{font-size:.75rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+  h1{font-family:'Italiana',serif;font-weight:400;font-size:clamp(2.6rem,7vw,4.2rem);letter-spacing:.06em;text-transform:uppercase;line-height:1.05}
+  .sub{max-width:480px;margin:20px auto 0;color:var(--muted);font-size:1.05rem}
+  .roles{margin-top:30px;padding-top:24px;border-top:1px solid var(--line);font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);line-height:2}
   .roles b{color:var(--ink);font-weight:400}
-  .steps{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:56px 0;border-top:1px solid var(--line)}
-  @media(max-width:640px){.steps{grid-template-columns:1fr}}
-  .step .n{font-family:'Italiana',serif;font-size:1.6rem;color:var(--gold)}
-  .step h2{font-size:.9rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;margin:10px 0 8px}
-  .step p{color:var(--muted);font-size:.98rem}
-  .privacy{border:1px solid var(--line);padding:26px 30px;margin-bottom:56px;text-align:center}
-  .privacy h2{font-size:.85rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;margin-bottom:8px}
-  .privacy p{color:var(--muted);font-size:.95rem;max-width:620px;margin:0 auto}
-  .apply{padding:0 0 24px}
-  .apply-head{text-align:center;margin-bottom:28px}
-  .apply-head h2{font-family:'Italiana',serif;font-weight:400;font-size:2rem;letter-spacing:.06em;text-transform:uppercase}
-  .apply-head p{color:var(--muted);margin-top:8px}
-  iframe{width:100%;height:1420px;border:1px solid var(--line);background:#fff;display:block}
-  @media(max-width:640px){iframe{height:1600px}}
-  .alt{text-align:center;color:var(--muted);font-size:.92rem;padding:18px 0 64px}
-  .alt a{color:var(--ink)}
+  form{padding:24px 0 8px}
+  .sec{display:flex;align-items:baseline;gap:14px;margin:52px 0 6px}
+  .sec .n{font-family:'Italiana',serif;font-size:1.4rem;color:var(--gold)}
+  .sec h2{font-size:.88rem;letter-spacing:.24em;text-transform:uppercase;font-weight:500}
+  .sec p{color:var(--muted);font-size:.92rem;margin-left:auto;text-align:right}
+  @media(max-width:560px){.sec p{display:none}}
+  .privacy{border:1px solid var(--line);padding:20px 24px;margin:14px 0 4px;text-align:center}
+  .privacy h3{font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;margin-bottom:6px}
+  .privacy p{color:var(--muted);font-size:.92rem}
+  .field{margin-top:28px}
+  label{display:block;font-size:.78rem;letter-spacing:.20em;text-transform:uppercase;font-weight:500;margin-bottom:6px}
+  label i{color:var(--gold);font-style:normal}
+  .hint{font-size:.88rem;color:var(--muted);margin-bottom:4px}
+  input[type=text],input[type=email],input[type=tel],input[type=date],textarea{width:100%;background:transparent;border:0;border-bottom:1px solid var(--line);padding:10px 2px;font:inherit;font-weight:300;color:var(--ink);border-radius:0;outline:none;transition:border-color .2s}
+  textarea{border:1px solid var(--line);padding:12px;margin-top:6px;resize:vertical;min-height:84px}
+  input:focus,textarea:focus{border-color:var(--gold)}
+  .drop{margin-top:6px;border:1px dashed rgba(185,144,79,.65);padding:30px 20px;text-align:center;cursor:pointer;transition:background .2s}
+  .drop:hover,.drop.over{background:rgba(185,144,79,.07)}
+  .drop p{color:var(--muted);font-size:.95rem}
+  .drop b{color:var(--ink);font-weight:400}
+  .drop .fname{color:var(--ink);margin-top:6px;font-size:.92rem}
+  button[type=submit]{display:block;width:100%;margin:52px 0 0;background:var(--ink);color:var(--cream);border:0;padding:17px;font:inherit;font-size:.85rem;letter-spacing:.26em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+  button[type=submit]:hover{background:#000}
+  .fine{text-align:center;color:var(--muted);font-size:.88rem;padding:16px 0 64px}
+  .thanks{display:none;text-align:center;padding:72px 0 96px}
+  .thanks h2{font-family:'Italiana',serif;font-weight:400;font-size:2.2rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px}
+  .thanks p{color:var(--muted)}
   footer{border-top:1px solid var(--line);padding:26px 24px;text-align:center;color:var(--muted);font-size:.85rem;letter-spacing:.08em}
 </style>
 </head>
@@ -73,36 +84,77 @@
     <p class="roles"><b>Bartenders</b> &nbsp;·&nbsp; Barbacks &nbsp;·&nbsp; Servers &nbsp;·&nbsp; <b>Hosts</b> &nbsp;·&nbsp; Bottle Service<br /><b>Security</b> &nbsp;·&nbsp; DJs &nbsp;·&nbsp; Sound Engineers &nbsp;·&nbsp; Managers</p>
   </section>
 
-  <section class="steps">
-    <div class="step">
-      <p class="n">01</p>
-      <h2>Basic Info</h2>
-      <p>Name, email, phone, the roles you want, your experience, and when you can work.</p>
-    </div>
-    <div class="step">
-      <p class="n">02</p>
-      <h2>Personal — Private</h2>
-      <p>Legal name, mailing address, and visa / work status. Only what placement and payroll require.</p>
-    </div>
-  </section>
+  <form id="applyForm" novalidate>
+    <div class="sec"><span class="n">01</span><h2>Basic Info</h2><p>Short answers — write it in.</p></div>
 
-  <section class="privacy">
-    <h2>Privacy Guarantee</h2>
-    <p>Your personal information is confidential to Vista Oceans. It is never sold, never shared publicly, and never sent to a venue without your permission for a specific shift or interview. You can ask us to delete it at any time.</p>
-  </section>
+    <div class="field"><label for="f_pref">Preferred name <i>*</i></label><input id="f_pref" type="text" required autocomplete="nickname" /></div>
+    <div class="field"><label for="f_email">Email <i>*</i></label><input id="f_email" type="email" required autocomplete="email" /></div>
+    <div class="field"><label for="f_phone">Phone <i>*</i></label><input id="f_phone" type="tel" required autocomplete="tel" /></div>
+    <div class="field"><label for="f_based">Based in <i>*</i></label><p class="hint">Neighborhood, borough, ZIP.</p><input id="f_based" type="text" required /></div>
+    <div class="field"><label for="f_role">Role you want <i>*</i></label><p class="hint">Write it in — list more than one if you like.</p><input id="f_role" type="text" required /></div>
+    <div class="field"><label for="f_exp">Experience <i>*</i></label><p class="hint">Years + where. e.g. 3 yrs — Submercer, bartender.</p><input id="f_exp" type="text" required /></div>
+    <div class="field"><label for="f_avail">Availability <i>*</i></label><p class="hint">Days &amp; shifts you can work. e.g. Thu–Sat, late night.</p><input id="f_avail" type="text" required /></div>
+    <div class="field"><label for="f_start">Can start <i>*</i></label><input id="f_start" type="text" required placeholder="Immediately, or a date" /></div>
 
-  <section class="apply" id="apply">
-    <div class="apply-head">
-      <h2>Apply</h2>
-      <p>About 4 minutes. * is required.</p>
+    <div class="sec"><span class="n">02</span><h2>Personal &amp; Confidential</h2><p>Private — see guarantee.</p></div>
+    <div class="privacy"><h3>Privacy Guarantee</h3><p>Everything below is confidential to Vista Oceans. Never sold, never shared publicly, never sent to a venue without your permission for a specific shift or interview. You can ask us to delete it at any time.</p></div>
+
+    <div class="field"><label for="f_legal">Legal name <i>*</i></label><p class="hint">Exactly as on your government ID.</p><input id="f_legal" type="text" required autocomplete="name" /></div>
+    <div class="field"><label for="f_addr">Mailing address <i>*</i></label><textarea id="f_addr" required autocomplete="street-address" placeholder="Street, Apt, City, State, ZIP"></textarea></div>
+    <div class="field"><label for="f_dob">Date of birth <i>*</i></label><input id="f_dob" type="date" required /></div>
+    <div class="field"><label for="f_auth">Authorized to work in the US? <i>*</i></label><input id="f_auth" type="text" required placeholder="Yes or No" /></div>
+    <div class="field"><label for="f_visa">Visa / work status <i>*</i></label><p class="hint">e.g. U.S. Citizen, Green Card, Work Visa (type + expiry), Student Visa.</p><input id="f_visa" type="text" required /></div>
+    <div class="field"><label for="f_lic">Licenses / certifications</label><p class="hint">Security Guard License # + expiry, TIPS, Food Handler — leave blank if none.</p><input id="f_lic" type="text" /></div>
+
+    <div class="field"><label>Resume — drop your file</label>
+      <div class="drop" id="dropZone"><p><b>Drop your resume here</b> or click to choose</p><p>PDF or doc, max 10 MB</p><p class="fname" id="fileName"></p></div>
+      <input id="f_file" type="file" accept=".pdf,.doc,.docx" style="display:none" />
     </div>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfiGIHnvHqe6DPFzuQBHC0dY_bYTLwJkvIS-0JCWkqjCcC4wQ/viewform?embedded=true" title="Vista Oceans — Shift Application" loading="lazy">Loading…</iframe>
-    <p class="alt">Prefer full screen? <a href="https://docs.google.com/forms/d/e/1FAIpQLSfiGIHnvHqe6DPFzuQBHC0dY_bYTLwJkvIS-0JCWkqjCcC4wQ/viewform" target="_blank" rel="noopener">Open the application</a></p>
+    <div class="field"><label for="f_link">Resume link / anything else</label><input id="f_link" type="text" placeholder="A link, or one or two lines" /></div>
+    <div class="field"><label for="f_priv">Privacy agreement <i>*</i></label><p class="hint">Write YES to confirm you understand your personal information will be kept confidential by Vista Oceans, as described above.</p><input id="f_priv" type="text" required placeholder="YES" /></div>
+
+    <button type="submit" id="submitBtn">Submit Application</button>
+    <p class="fine" id="formFine">One theme, start to finish — your answers go straight to Vista Oceans.</p>
+  </form>
+
+  <section class="thanks" id="thanks">
+    <p class="eyebrow">Received</p>
+    <h2>Thank You</h2>
+    <p>Your application is in. If there's a shift that fits, we'll reach out by phone or email.</p>
   </section>
 
 </main>
 
 <footer>© 2026 Vista Oceans LLC</footer>
 
+<script>
+var WEBAPP = "https://script.google.com/macros/s/AKfycbwL6z2iOcNsoJlXTzFMYdD_UWGnFNCogmpEzMfM-AZtBv6qZEgG5_BuK7NYGPQWYWLu/exec";
+document.getElementById('applyForm').addEventListener('submit', function(ev){
+  ev.preventDefault();
+  var form = ev.target;
+  if(!form.checkValidity()){ form.reportValidity(); return; }
+  var btn = document.getElementById('submitBtn'); btn.textContent = 'Sending…'; btn.disabled = true;
+  function val(id){ return document.getElementById(id).value.trim(); }
+  var p = new URLSearchParams();
+  p.append('pref', val('f_pref')); p.append('email', val('f_email')); p.append('phone', val('f_phone'));
+  p.append('based', val('f_based')); p.append('role', val('f_role')); p.append('exp', val('f_exp'));
+  p.append('avail', val('f_avail')); p.append('start', val('f_start')); p.append('legal', val('f_legal'));
+  p.append('addr', val('f_addr')); p.append('dob', val('f_dob')); p.append('auth', val('f_auth'));
+  p.append('visa', val('f_visa')); p.append('lic', val('f_lic')); p.append('link', val('f_link'));
+  p.append('priv', val('f_priv'));
+  p.append('resume', (fi.files && fi.files[0]) ? ('File dropped: ' + fi.files[0].name + ' (sent separately)') : '');
+  var done = function(){
+    if(fi.files && fi.files[0]){
+      var fd = new FormData();
+      fd.append('_subject', 'Resume \u2014 Vista Oceans Employment: ' + val('f_pref'));
+      fd.append('Preferred name', val('f_pref')); fd.append('Email', val('f_email'));
+      fd.append('attachment', fi.files[0]);
+      fetch('https://formsubmit.co/ajax/bennett@genovesi.us', {method:'POST', body:fd}).catch(function(){}).finally(showThanks);
+    } else { showThanks(); }
+  };
+  var showThanks = function(){ form.style.display='none'; document.getElementById('thanks').style.display='block'; window.scrollTo({top:0,behavior:'smooth'}); };
+  fetch(WEBAPP, {method:'POST', mode:'no-cors', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:p.toString()}).catch(function(){}).finally(done);
+});
+</script>
 </body>
 </html>
