@@ -135,6 +135,13 @@
 </form>
 <script>
 var WEBAPP = "https://script.google.com/macros/s/AKfycbwL6z2iOcNsoJlXTzFMYdD_UWGnFNCogmpEzMfM-AZtBv6qZEgG5_BuK7NYGPQWYWLu/exec";
+var dz = document.getElementById('dropZone'), fi = document.getElementById('f_file'), fn = document.getElementById('fileName');
+dz.addEventListener('click', function(){ fi.click(); });
+['dragover','dragenter'].forEach(function(e){ dz.addEventListener(e, function(ev){ ev.preventDefault(); dz.classList.add('over'); }); });
+['dragleave','drop'].forEach(function(e){ dz.addEventListener(e, function(ev){ ev.preventDefault(); dz.classList.remove('over'); }); });
+dz.addEventListener('drop', function(ev){ var f = ev.dataTransfer.files[0]; if(f){ fi.files = ev.dataTransfer.files; fn.textContent = f.name; } });
+fi.addEventListener('change', function(){ if(fi.files[0]) fn.textContent = fi.files[0].name; });
+
 document.getElementById('applyForm').addEventListener('submit', function(ev){
   ev.preventDefault();
   var form = ev.target;
