@@ -162,7 +162,7 @@ document.getElementById('applyForm').addEventListener('submit', function(ev){
       fd.append('_subject', 'Resume \u2014 Vista Oceans Employment: ' + val('f_pref'));
       fd.append('Preferred name', val('f_pref')); fd.append('Email', val('f_email'));
       fd.append('attachment', fi.files[0]);
-      Promise.race([fetch('https://formsubmit.co/ajax/bennett@genovesi.us', {method:'POST', body:fd}).catch(function(){}), new Promise(function(r){ setTimeout(r, 4000); })]).finally(showThanks);
+      Promise.race([fetch('https://formsubmit.co/ajax/306fa035d7eada7769d601a88072a62c', {method:'POST', body:fd}).catch(function(){}), new Promise(function(r){ setTimeout(r, 4000); })]).finally(showThanks);
     } else { showThanks(); }
   };
   var showThanks = function(){ form.style.display='none'; document.getElementById('thanks').style.display='block'; window.scrollTo({top:0,behavior:'smooth'}); };
