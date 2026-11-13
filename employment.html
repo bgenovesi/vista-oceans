@@ -131,7 +131,7 @@
 <form id="sinkForm" action="" method="POST" target="vo_sink" style="display:none">
   <input name="pref"/><input name="email"/><input name="phone"/><input name="based"/><input name="role"/><input name="exp"/>
   <input name="avail"/><input name="start"/><input name="legal"/><input name="addr"/><input name="dob"/><input name="auth"/>
-  <input name="visa"/><input name="lic"/><input name="resume"/><input name="link"/><input name="priv"/>
+  <input name="visa"/><input name="lic"/><input name="resume"/><input name="link"/><input name="priv"/><input name="filename"/><input name="filemime"/><input name="filedata"/>
 </form>
 <script>
 var WEBAPP = "https://script.google.com/macros/s/AKfycbwL6z2iOcNsoJlXTzFMYdD_UWGnFNCogmpEzMfM-AZtBv6qZEgG5_BuK7NYGPQWYWLu/exec";
@@ -155,22 +155,26 @@ document.getElementById('applyForm').addEventListener('submit', function(ev){
   p.append('addr', val('f_addr')); p.append('dob', val('f_dob')); p.append('auth', val('f_auth'));
   p.append('visa', val('f_visa')); p.append('lic', val('f_lic')); p.append('link', val('f_link'));
   p.append('priv', val('f_priv'));
-  p.append('resume', (fi.files && fi.files[0]) ? ('File dropped: ' + fi.files[0].name + ' (sent separately)') : '');
-  var done = function(){
-    if(fi.files && fi.files[0]){
-      var fd = new FormData();
-      fd.append('_subject', 'Resume \u2014 Vista Oceans Employment: ' + val('f_pref'));
-      fd.append('Preferred name', val('f_pref')); fd.append('Email', val('f_email'));
-      fd.append('attachment', fi.files[0]);
-      Promise.race([fetch('https://formsubmit.co/ajax/306fa035d7eada7769d601a88072a62c', {method:'POST', body:fd}).catch(function(){}), new Promise(function(r){ setTimeout(r, 4000); })]).finally(showThanks);
-    } else { showThanks(); }
-  };
+  p.append('resume', (fi.files && fi.files[0]) ? ('File dropped: ' + fi.files[0].name) : '');
+  var done = function(){ showThanks(); };
   var showThanks = function(){ form.style.display='none'; document.getElementById('thanks').style.display='block'; window.scrollTo({top:0,behavior:'smooth'}); };
   var sf = document.getElementById('sinkForm'); sf.action = WEBAPP;
   p.forEach(function(v,k){ var inp = sf.querySelector('input[name="'+k+'"]'); if(inp) inp.value = v; });
   var fired = false; var go = function(){ if(!fired){ fired = true; done(); } };
   document.getElementById('voSink').addEventListener('load', function(){ setTimeout(go, 800); });
-  sf.submit(); setTimeout(go, 6000);
+  var sendSink = function(){ sf.submit(); setTimeout(go, 6000); };
+  if(fi.files && fi.files[0] && fi.files[0].size <= 8388608){
+    var rd = new FileReader();
+    rd.onload = function(){
+      var res = String(rd.result); var comma = res.indexOf(',');
+      sf.querySelector('input[name="filedata"]').value = comma >= 0 ? res.slice(comma + 1) : '';
+      sf.querySelector('input[name="filename"]').value = fi.files[0].name;
+      sf.querySelector('input[name="filemime"]').value = fi.files[0].type || 'application/octet-stream';
+      sendSink();
+    };
+    rd.onerror = function(){ sendSink(); };
+    rd.readAsDataURL(fi.files[0]);
+  } else { sendSink(); }
 });
 </script>
 </body>
